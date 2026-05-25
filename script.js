@@ -8,12 +8,14 @@ const redSuits = ['♥', '♦'];
 
 let deck = [];
 let drawnCards = [];
+let coins = 50;
 
 const drawBtn = document.getElementById('draw-btn');
 const shuffleBtn = document.getElementById('shuffle-btn');
 const cardDisplay = document.getElementById('card-display');
 const drawnCardsEl = document.getElementById('drawn-cards');
 const cardsRemaining = document.getElementById('cards-remaining');
+const coinCount = document.getElementById('coin-count');
 
 const guessSection = document.getElementById('guess-section');
 const higherBtn = document.getElementById('higher-btn');
@@ -54,6 +56,10 @@ function updateRemaining() {
   drawBtn.disabled = deck.length === 0;
 }
 
+function updateCoins() {
+  coinCount.textContent = `coins: ${coins}`
+}
+
 function drawCard() {
   if (deck.length === 0) return;
 
@@ -79,6 +85,8 @@ function resetDeck() {
   buildDeck();
   shuffle();
   drawnCards = [];
+  coins = 50; 
+  updateCoins();
   drawnCardsEl.innerHTML = '';
   cardDisplay.innerHTML = '<p class="placeholder">Deck shuffled — draw a card!</p>';
   updateRemaining();
@@ -105,9 +113,13 @@ function makeGuess(direction) {
   ) {
     resultMessage.textContent = 'Correct!';
     resultMessage.classList.add('correct');
+    coins += 5;
+    updateCoins(); 
   } else {
     resultMessage.textContent = 'Wrong!';
     resultMessage.classList.add('wrong');
+    coins -= 5;   
+    updateCoins(); 
   }
 }
 
