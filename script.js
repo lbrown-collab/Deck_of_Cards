@@ -56,8 +56,9 @@ function updateRemaining() {
   drawBtn.disabled = deck.length === 0;
 }
 
+//coin count
 function updateCoins() {
-  coinCount.textContent = `coins: ${coins}`
+  coinCount.textContent = `🪙 coins: ${coins}`
 }
 
 function showGameOver(message) {
@@ -87,7 +88,7 @@ function drawCard() {
   updateRemaining();
 }
 
-
+//Reset the deck
 function resetDeck() {
   buildDeck();
   shuffle();
@@ -102,6 +103,7 @@ function resetDeck() {
   updateRemaining();
 }
 
+//End of Game
 function makeGuess(direction) {
   if (deck.length === 0) {
     guessSection.classList.add('hidden');
@@ -112,7 +114,7 @@ function makeGuess(direction) {
       showGameOver('Out of cards-You finished with ${coins} coins.')
     }
   }
-
+//High, Low or Tie
   const previousValue = valueMap[currentCard.value];
   drawCard();
   const newValue = valueMap[currentCard.value];

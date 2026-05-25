@@ -75,9 +75,9 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 #coin-count {
   color: goldenrod;
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 700;
-  width: 100%;
+  width: 90%;
   text-align: center;
 }
 
@@ -145,6 +145,12 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
   display: none;
 }
 
+.cards-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .guess-section {
   position: fixed;
   right: 3rem;
@@ -177,6 +183,6 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
   margin-bottom: 1rem;
 }
 
-.result-message.correct {color: #52b788;}
+.result-message.correct {color: #790673;}
 .result-message.incorrect {color: #52b7 88;}
-.result-message.tie {color: #52b788;}
+.result-message.tie {color: #7e0a0a;}
