@@ -60,6 +60,13 @@ function updateCoins() {
   coinCount.textContent = `coins: ${coins}`
 }
 
+function showGameOver(message) {
+  guessSection.classList.add('hidden');
+  drawBtn.disabled = true;
+  resultMessage.classname = 'result-message wrong';
+  resultMessage.textContent = message;
+}
+
 function drawCard() {
   if (deck.length === 0) return;
 
@@ -88,6 +95,9 @@ function resetDeck() {
   coins = 50; 
   updateCoins();
   drawnCardsEl.innerHTML = '';
+    guessSection.classList.add('hidden');
+  resultMessage.textContent = '';  
+  resultMessage.className = 'result-message'; 
   cardDisplay.innerHTML = '<p class="placeholder">Deck shuffled — draw a card!</p>';
   updateRemaining();
 }
@@ -96,6 +106,11 @@ function makeGuess(direction) {
   if (deck.length === 0) {
     guessSection.classList.add('hidden');
     return;
+    if (coins <= 0) {
+      showGameOver('Game over. You/re broke! Shuffle to play again.');
+    } else if (deck.length === 0) {
+      showGameOver('Out of cards-You finished with ${coins} coins.')
+    }
   }
 
   const previousValue = valueMap[currentCard.value];

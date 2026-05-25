@@ -75,8 +75,8 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 #coin-count {
   color: goldenrod;
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 5rem;
+  font-weight: 700;
   width: 100%;
   text-align: center;
 }
@@ -146,9 +146,14 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 
 .guess-section {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  gap: 2rem;
-  justify-context:center
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-context: center
   margin-bottom: 1rem;
 }
 
