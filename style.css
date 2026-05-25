@@ -132,3 +132,38 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 .drawn-cards .card .suit {
   font-size: 1.1rem;
 }
+
+.hidden {
+  display: none;
+}
+
+.guess-section {
+  display: flex;
+  gap: 2rem;
+  justify-context:center
+  margin-bottom: 1rem;
+}
+
+#higher-btn {
+  background: #2d6a4f;
+  border: 3px solid #1b4332;
+  color: #d8f3dc
+}
+
+#lower-btn {
+ background: #2d6a4f;
+  border: 3px solid #1b4332;
+  color: #d8f3dc
+}
+
+.result-message {
+  text-alight: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-height: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.result-message.correct {color: #52b788;}
+.result-message.incorrect {color: #52b7 88;}
+.result-message.tie {color: #52b788;}
