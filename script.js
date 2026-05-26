@@ -8,7 +8,7 @@ const redSuits = ['♥', '♦'];
 
 let deck = [];
 let drawnCards = [];
-let coins = 50;
+let coins = 20;
 
 const drawBtn = document.getElementById('draw-btn');
 const shuffleBtn = document.getElementById('shuffle-btn');
@@ -58,13 +58,13 @@ function updateRemaining() {
 
 //coin count
 function updateCoins() {
-  coinCount.textContent = `🪙 coins: ${coins}`
+  coinCount.textContent = `Dollars remaining: ${coins}`
 }
 
 function showGameOver(message) {
   guessSection.classList.add('hidden');
   drawBtn.disabled = true;
-  resultMessage.classname = 'result-message wrong';
+  resultMessage.className = 'result-message wrong';
   resultMessage.textContent = message;
 }
 
@@ -108,11 +108,6 @@ function makeGuess(direction) {
   if (deck.length === 0) {
     guessSection.classList.add('hidden');
     return;
-    if (coins <= 0) {
-      showGameOver('Game over. You/re broke! Shuffle to play again.');
-    } else if (deck.length === 0) {
-      showGameOver('Out of cards-You finished with ${coins} coins.')
-    }
   }
 //High, Low or Tie
   const previousValue = valueMap[currentCard.value];
@@ -122,22 +117,28 @@ function makeGuess(direction) {
   resultMessage.className = 'result-message';
 
   if (newValue === previousValue) {
-    resultMessage.textContent = "It's a tie!";
+    resultMessage.textContent = "Tie!";
     resultMessage.classList.add('tie');
   } else if (
     (direction === 'higher' && newValue > previousValue) ||
     (direction === 'lower'  && newValue < previousValue)
   ) {
-    resultMessage.textContent = 'Correct!';
+    resultMessage.textContent = 'Good guess!';
     resultMessage.classList.add('correct');
     coins += 5;
     updateCoins(); 
   } else {
-    resultMessage.textContent = 'Wrong!';
+    resultMessage.textContent = 'Too bad!';
     resultMessage.classList.add('wrong');
     coins -= 5;   
     updateCoins(); 
   }
+
+  if (coins <= 0) {
+      showGameOver('Game over. You\'re broke! Shuffle to play again.');
+    } else if (deck.length === 0) {
+      showGameOver('Out of cards-You finished with ${coins} coins.')
+   }
 }
 
 higherBtn.addEventListener('click', () => makeGuess('higher'));
